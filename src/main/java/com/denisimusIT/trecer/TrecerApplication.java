@@ -7,36 +7,31 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+
 @SpringBootApplication
 public class TrecerApplication implements CommandLineRunner {
 
-	@Autowired
-	private AirplaneTableRepository repository;
+    private final AirplaneTableRepository repository;
 
-	private AirplaneCharacteristics airplaneCharacteristics;
-	private TemporaryPoint position;
-	private Flight flight;
+    @Autowired
+    public TrecerApplication(AirplaneTableRepository repository) {
+        this.repository = repository;
+    }
 
+    public static void main(String[] args) {
+        SpringApplication.run(TrecerApplication.class, args);
+    }
 
+    @Override
+    public void run(String... args) {
+        AirplaneCharacteristics airplaneCharacteristics = new AirplaneCharacteristics(250L, 11L, 50L, 66L);
+        TemporaryPoint position = new TemporaryPoint(25, 56, 140, 160, 64);
+        Flight flight = new Flight(1L, new ArrayList<>(), new ArrayList<>());
 
+        repository.deleteAll();
 
-	public static void main(String[] args) {
-		SpringApplication.run(TrecerApplication.class, args);
-
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-
-    airplaneCharacteristics = new AirplaneCharacteristics(250,11,50,66);
-    position = new TemporaryPoint(25,56,140,160,64);
-
-		repository.deleteAll();
-
-		repository.insert(new AirplaneTable((long) 2256,airplaneCharacteristics.toString(),position.toString(),flight.toString()));
-
-
-
-
-	}
+        repository.insert(
+                new AirplaneTable(2256L, airplaneCharacteristics.toString(), position.toString(), flight.toString()));
+    }
 }
