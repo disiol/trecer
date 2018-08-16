@@ -1,10 +1,15 @@
 package com.denisimusIT.trecer;
 
 public class TemporaryPoint {
+
     private Integer width;
+
     private Integer longitude;
+
     private Integer flightHeight;
+
     private Integer flightSpeed;
+
     private Integer course;
 
     public TemporaryPoint(Integer width, Integer longitude, Integer flightHeight, Integer flightSpeed, Integer course) {
