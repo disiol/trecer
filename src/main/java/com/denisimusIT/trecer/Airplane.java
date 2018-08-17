@@ -2,6 +2,7 @@ package com.denisimusIT.trecer;
 
 public class Airplane {
 
+
     private Long id;
 
     private String airplaneCharacteristics;

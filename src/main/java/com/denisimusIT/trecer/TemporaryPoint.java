@@ -19,4 +19,15 @@ public class TemporaryPoint {
         this.flightSpeed = flightSpeed;
         this.course = course;
     }
+
+    @Override
+    public String toString() {
+        return "TemporaryPoint{" +
+                "width=" + width +
+                ", longitude=" + longitude +
+                ", flightHeight=" + flightHeight +
+                ", flightSpeed=" + flightSpeed +
+                ", course=" + course +
+                '}';
+    }
 }

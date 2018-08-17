@@ -12,9 +12,9 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
+    @Autowired
     private final AirplaneTableRepository repository;
 
-    @Autowired
     public Main(AirplaneTableRepository repository) {
         this.repository = repository;
     }
@@ -24,17 +24,28 @@ public class Main implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws Exception {
         AirplaneCharacteristics airplaneCharacteristics = new AirplaneCharacteristics(250L, 11L, 50L, 66L);
         TemporaryPoint position = new TemporaryPoint(25, 56, 140, 160, 64);
         Flight flight = new Flight(1L, new ArrayList<>(), new ArrayList<>());
 
-        AirplaneTable airplaneTable = new AirplaneTable(2256L, airplaneCharacteristics.toString(), position.toString(), flight.toString());
+        AirplaneTable airplaneTable = new AirplaneTable(2257L, airplaneCharacteristics, position.toString(), flight.toString());
 
 
         repository.deleteAll();
 
         repository.insert(airplaneTable);
+
+//        System.err.println(repository.findAirplaneCharacteristics(airplaneCharacteristics));
+
+
+       // throw new Exception();
+
+
+
+
+
+
 
     }
 }
