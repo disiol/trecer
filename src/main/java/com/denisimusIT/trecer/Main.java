@@ -10,17 +10,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 
 @SpringBootApplication
-public class TrecerApplication implements CommandLineRunner {
+public class Main implements CommandLineRunner {
 
     private final AirplaneTableRepository repository;
 
     @Autowired
-    public TrecerApplication(AirplaneTableRepository repository) {
+    public Main(AirplaneTableRepository repository) {
         this.repository = repository;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(TrecerApplication.class, args);
+        SpringApplication.run(Main.class, args);
     }
 
     @Override
@@ -29,9 +29,12 @@ public class TrecerApplication implements CommandLineRunner {
         TemporaryPoint position = new TemporaryPoint(25, 56, 140, 160, 64);
         Flight flight = new Flight(1L, new ArrayList<>(), new ArrayList<>());
 
+        AirplaneTable airplaneTable = new AirplaneTable(2256L, airplaneCharacteristics.toString(), position.toString(), flight.toString());
+
+
         repository.deleteAll();
 
-        repository.insert(
-                new AirplaneTable(2256L, airplaneCharacteristics.toString(), position.toString(), flight.toString()));
+        repository.insert(airplaneTable);
+
     }
 }

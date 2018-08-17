@@ -3,8 +3,9 @@ package com.denisimusIT.trecer.DB;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "airplane")
+@Document(collection = "airplane2")
 public class AirplaneTable {
+
 
     @Id
     private Long id;
