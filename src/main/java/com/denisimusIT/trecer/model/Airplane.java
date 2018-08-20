@@ -1,8 +1,14 @@
-package com.denisimusIT.trecer;
+package com.denisimusIT.trecer.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document(collection = "Airplane")
+@TypeAlias("Airplane")
 public class Airplane {
-
-
+    @Id
     private Long id;
 
     private String airplaneCharacteristics;
@@ -11,7 +17,7 @@ public class Airplane {
 
     private String flight;
 
-    public Airplane() {
+    public Airplane(long id, AirplaneCharacteristics airplaneCharacteristics, TemporaryPoint position, Flight flight) {
     }
 
     public Airplane(Long id, String airplaneCharacteristics, TemporaryPoint position, Flight flight) {

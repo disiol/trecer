@@ -1,9 +1,11 @@
 package com.denisimusIT.trecer;
 
-import com.denisimusIT.trecer.DB.AirplaneTable;
-import com.denisimusIT.trecer.DB.AirplaneTableRepository;
+import com.denisimusIT.trecer.model.Airplane;
+import com.denisimusIT.trecer.repository.AirplaneRepository;
+import com.denisimusIT.trecer.model.AirplaneCharacteristics;
+import com.denisimusIT.trecer.model.Flight;
+import com.denisimusIT.trecer.model.TemporaryPoint;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ public class MainTests {
     private final static String NEW_LINE = System.lineSeparator();
 
     @Autowired
-    private AirplaneTableRepository repository;
+    private AirplaneRepository repository;
     private TemporaryPoint position;
     private Flight flight;
     private AirplaneCharacteristics airplaneCharacteristics;
@@ -39,7 +41,7 @@ public class MainTests {
         position = new TemporaryPoint(25, 56, 140, 160, 64);
         flight = new Flight(1L, new ArrayList<>(), new ArrayList<>());
         airplaneCharacteristics = new AirplaneCharacteristics(250L, 11L, 50L, 66L);
-        AirplaneTable airplaneTable = new AirplaneTable(id, airplaneCharacteristics, position.toString(), flight.toString());
+        Airplane airplaneTable = new Airplane (id, airplaneCharacteristics, position, flight);
 
         repository.deleteAll();
 

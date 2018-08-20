@@ -1,4 +1,4 @@
-package com.denisimusIT.trecer;
+package com.denisimusIT.trecer.model;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.denisimusIT.trecer;
+package com.denisimusIT.trecer.model;
 
 public class AirplaneCharacteristics {
     private Long maxSpeed;
